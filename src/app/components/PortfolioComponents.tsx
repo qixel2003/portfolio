@@ -209,33 +209,42 @@ export const Experience = () => {
 
 // Tools Component
 export const Tools = () => {
+  const tools = [
+    {
+      name: "Notion",
+      icon: "N",
+      className: "bg-white text-black",
+    },
+    {
+      name: "Figma",
+      icon: <Figma size={20} />,
+      className: "bg-purple-500 text-white",
+    },
+    {
+      name: "Canva",
+      icon: "C",
+      className: "bg-blue-500 text-white",
+    },
+  ];
+
   return (
-    <section className="py-12 border-t border-zinc-800">
-      <h2 className="text-2xl font-bold mb-6 text-white">Tools</h2>
-      <div className="flex gap-6">
-        <div
-            className="flex items-center gap-3 px-6 py-4 bg-zinc-900 border border-zinc-800 rounded-xl shadow-sm hover:border-zinc-700 transition-colors">
-          <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-black">
-            N
-          </div>
-          <span className="font-medium text-zinc-200">Notion</span>
+      <section className="py-12 border-t border-zinc-800 w-full overflow-hidden">
+        <h2 className="text-2xl font-bold mb-6 text-white">Tools</h2>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
+          {tools.map((tool) => (
+              <div key={tool.name} className="w-full min-w-0 flex items-center gap-3 px-4 sm:px-6 py-4 bg-zinc-900 border border-zinc-800 rounded-xl shadow-sm hover:border-zinc-700 transition-colors" >
+                <div className={`shrink-0 w-10 h-10 rounded-lg flex items-center justify-center ${tool.className}`} >
+                  {tool.icon}
+                </div>
+
+                <span className="min-w-0 truncate font-medium text-zinc-200">
+              {tool.name}
+            </span>
+              </div>
+          ))}
         </div>
-        <div
-            className="flex items-center gap-3 px-6 py-4 bg-zinc-900 border border-zinc-800 rounded-xl shadow-sm hover:border-zinc-700 transition-colors">
-          <div className="w-10 h-10 bg-purple-500 rounded-lg flex items-center justify-center text-white">
-            <Figma size={20}/>
-          </div>
-          <span className="font-medium text-zinc-200">Figma</span>
-        </div>
-        <div
-            className="flex items-center gap-3 px-6 py-4 bg-zinc-900 border border-zinc-800 rounded-xl shadow-sm hover:border-zinc-700 transition-colors">
-          <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center text-white">
-            C
-          </div>
-          <span className="font-medium text-zinc-200">Canva</span>
-        </div>
-      </div>
-    </section>
+      </section>
   );
 };
 
